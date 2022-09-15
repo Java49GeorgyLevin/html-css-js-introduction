@@ -2,19 +2,17 @@
     background-color:antiquewhite;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   }
+}
 .logo {
     display: block;
-    text-align: center;
     font-size: 3em;
-   }
+}
 .main-class {
 }
 .details-container {    
 }
 .details-image {
     display: inline-block;
-    text-align: center;
     width: 300px;
     border-radius: 12px;
 }
@@ -22,9 +20,12 @@
     display:block;
     font-size: 2em;
 }
-.thumbnails-item {
+.thumbnails-list {
     display: inline-block;
-    text-align: center;
+    width: 800px;
+}
+.thumbnails-item {
+    display: inline-block;    
 }
 .thumbnails-anchor {
     font-size: 1em;    
@@ -32,12 +33,9 @@
 .thumbnails-image {
     display:inline-block;
     height: 200px;
-    border-radius: 4px;
-    text-align: center;
-    
+    border-radius: 4px;    
 }
 .thumbnails-title {
     display:block;
-    font-size: 1em;
-    text-align: center;
+    font-size: 1em;   
 }
