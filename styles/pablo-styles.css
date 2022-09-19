@@ -21,9 +21,9 @@ body {
 }
 .details-image {
     
-    width: 70vw;
-    height: 50vh;
-    border-radius: 4%;
+    width: 50vw;
+    height: 70vw;
+    border-radius: 12%;
 }
 .details-title {
     display: block;
@@ -52,10 +52,8 @@ body {
         
 }
 .thumbnails-anchor {
-    
     text-decoration: none;
-    color: brown;
-      
+    color: brown;         
 }
 .thumbnails-image {
     width: 20vw;
