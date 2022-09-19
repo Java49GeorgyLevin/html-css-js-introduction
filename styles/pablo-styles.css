@@ -1,44 +1,71 @@
-.body {
+body {
+    display: flex;
+    flex-direction: column;
     background-color:gray;
-    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .logo {
+    font-size: 2em;
+    color: gray;
+    background-color: burlywood;
     display: block;
-    font-size: 3em;
+    text-align: center;    
 }
 .main-class {
 }
 .details-container { 
-    display: inline-block;
-    width: 800px;   
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5vh;    
 }
 .details-image {
     
-    width: 300px;
-    border-radius: 12px;
+    width: 70vw;
+    height: 50vh;
+    border-radius: 4%;
 }
 .details-title {
-    display: block; 
-    font-size: 2em;
+    display: block;
+    text-align: justify; 
+    font-size: 1.2em;
+    color: burlywood;
 }
 .thumbnails-list {
-    display: inline-block;
-    width: 800px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 25vh;
+    overflow-y: auto;
+    justify-content: space-around;
+    padding: 0;
 }
 .thumbnails-item {
-    display: inline-block;    
+    width: 20vw;
+    height: 45vw;
+    margin-top: 2vh;
+    border: solid 1px burlywood;
+    border-radius: 12%;
+    background-color: skyblue;
+    text-align: center;
+        
 }
 .thumbnails-anchor {
-    font-size: 1em;    
+    
+    text-decoration: none;
+    color: brown;
+      
 }
 .thumbnails-image {
-   
-    height: 200px;
-    border-radius: 4px;    
+    width: 20vw;
+    height: 25vw;           
 }
-.thumbnails-title {
+.thumbnails-title {    
     display:block;
-    font-size: 1em;   
+    font-size: 5vw;    
+}
+.thumbnail-year {
+    font-size: 4vw;
+    font-style: italic;
 }
