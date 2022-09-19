@@ -40,30 +40,33 @@ body {
     overflow-y: auto;
     justify-content: space-around;
     padding: 0;
+    
 }
 .thumbnails-item {
     width: 20vw;
     height: 45vw;
     margin-top: 2vh;
     border: solid 1px burlywood;
-    border-radius: 12%;
-    background-color: skyblue;
-    text-align: center;
-        
+    border-radius: 12%;    
+    text-align: center; 
+    background-color: brown;          
 }
 .thumbnails-anchor {
     text-decoration: none;
-    color: brown;         
+    color: brown;          
 }
 .thumbnails-image {
+    display: block;
     width: 20vw;
     height: 25vw;           
 }
-.thumbnails-title {    
+.thumbnails-title {
+    background-color: skyblue;  
     display:block;
-    font-size: 5vw;    
+    font-size: 5vw;        
 }
 .thumbnail-year {
     font-size: 4vw;
+    color: skyblue;
     font-style: italic;
 }
