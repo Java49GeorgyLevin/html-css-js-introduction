@@ -23,7 +23,7 @@ body {
     
     width: 50vw;
     height: 70vw;
-    border-radius: 12%;
+    border-radius: 6%;
 }
 .details-title {
     display: block;
@@ -44,12 +44,13 @@ body {
 }
 .thumbnails-item {
     width: 20vw;
-    height: 45vw;
+    height: 43vw;
     margin-top: 2vh;
     border: solid 1px burlywood;
-    border-radius: 12%;    
+    border-radius: 6%;    
     text-align: center; 
-    background-color: brown;          
+    background-color: brown;
+    overflow: auto;          
 }
 .thumbnails-anchor {
     text-decoration: none;
