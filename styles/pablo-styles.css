@@ -80,7 +80,7 @@ body {
     border-radius: 6%;    
     text-align: center; 
     background-color: brown;
-    overflow: auto;          
+    overflow: hidden;          
 }
 .thumbnails-anchor {
     text-decoration: none;
@@ -93,7 +93,7 @@ body {
 }
 .thumbnails-title {
     background-color: skyblue;  
-    display:block;
+    display: block;
     text-align: center;
     height: var(--thumbnails-title-height);
     font-family: lakeshore;        
@@ -137,5 +137,11 @@ body {
     :root {
     --thumbnails-title-height: calc( var(--thumbnails-img-height) * 0.2);
     --thumbnails-year-height: calc( var(--thumbnails-img-height) * 0.1) ;
+    }
+    .details-title {
+        font-size: 3vh;
+    }
+    .thumbnails-list {
+        width: calc( var(--thumbnails-img-width) + 4vw);
     }
 }
