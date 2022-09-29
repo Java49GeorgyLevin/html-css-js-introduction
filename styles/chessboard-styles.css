@@ -1,3 +1,61 @@
+:root {
+    --cell-width: 10vw;
+    --cell-height: 10vw;
+}
+body, html {
+    height: 100%;
+}
 body {
-    color:blanchedalmond;
+    background-color:gray;
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.board {
+    width: calc(var(--cell-width) * 8);
+    height: calc(var(--cell-height) * 8);
+    border: 1px solid black;
+    display: flex;
+    position: absolute;
+    top: calc(50vh - var(--cell-height) * 4 - 1px);
+    left: calc(50vw - var(--cell-width) * 4 - 1px);
+    flex-direction: column;
+}
+.board-row {
+    display: flex;
+    flex-direction: row;
+}
+div {
+    width: var(--cell-width);
+    height: var(--cell-height);
+}
+.cell-black {
+    background-color: black;
+}
+.cell-white {
+    background-color: white;
+}
+.copyright {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+@media (min-width: 560px) {
+    :root {
+        --cell-width: 10vh;
+        --cell-height: 10vh;
+    }
+    
+}
+@media (min-width: 900px) {
+    :root {
+        --cell-width: 60px;
+        --cell-height: 60px;
+    }
+    
 }
