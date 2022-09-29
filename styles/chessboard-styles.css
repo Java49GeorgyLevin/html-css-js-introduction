@@ -8,21 +8,15 @@ body, html {
 body {
     background-color:gray;
     margin: 0;
-    text-align: center;
-    justify-content: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
 }
 .board {
-    width: calc(var(--cell-width) * 8);
-    height: calc(var(--cell-height) * 8);
     border: 1px solid black;
     display: flex;
+    flex-direction: column;
     position: absolute;
     top: calc(50vh - var(--cell-height) * 4 - 1px);
     left: calc(50vw - var(--cell-width) * 4 - 1px);
-    flex-direction: column;
 }
 .board-row {
     display: flex;
@@ -39,8 +33,7 @@ div {
     background-color: white;
 }
 .copyright {
-    display: flex;
-    flex-direction: column;
+    display: block;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -49,13 +42,11 @@ div {
     :root {
         --cell-width: 10vh;
         --cell-height: 10vh;
-    }
-    
+    }    
 }
 @media (min-width: 900px) {
     :root {
         --cell-width: 60px;
         --cell-height: 60px;
-    }
-    
+    }       
 }
