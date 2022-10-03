@@ -6,34 +6,42 @@ body, html {
     height: 100%;
 }
 body {
-    background-color:gray;
     margin: 0;
     position: relative;
-}
-.board {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: calc(50vh - var(--cell-height) * 4 - 1px);
-    left: calc(50vw - var(--cell-width) * 4 - 1px);
+    justify-content: center;
+    align-items: center;
 }
-.board-row {
+.header {
+    font-size: 2em;
+    color: gray;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.board {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;    
+}
+.board-row {    
     display: flex;
     flex-direction: row;
 }
-div {
+.cell {    
     width: var(--cell-width);
     height: var(--cell-height);
 }
-.cell-black {
+.cell.cell-black {
     background-color: black;
 }
-.cell-white {
+.cell.cell-white {
     background-color: white;
 }
 .copyright {
-    display: block;
+    font-size: 1em;
+    color: gray;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -48,5 +56,5 @@ div {
     :root {
         --cell-width: 60px;
         --cell-height: 60px;
-    }       
+    }   
 }
