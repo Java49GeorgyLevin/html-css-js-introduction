@@ -57,14 +57,14 @@ body {
 }
 .details-title {
     display: block;
-    text-align: left; 
+    text-align: center; 
     color: brown;
     background-color: skyblue;
     width: var(--details-img-width);
     font-size: 1em;
     font-family: airstream;
     position: absolute;
-    bottom: -4vh;
+    top: 80%;
     left: -4vh;
     border-radius: 2px;    
 }
@@ -140,6 +140,7 @@ body {
         flex-direction: column;
         flex-wrap: nowrap;
         max-height: 80vh;
+        width: calc( var(--thumbnails-img-width) + 4vw);
         order: -1;
         justify-content: flex-start;
     }
@@ -147,7 +148,6 @@ body {
         flex-direction: row;        
     }
     .details-container {
-        margin-bottom: 0;
         justify-content: space-around;
     }
     .details-image {
@@ -162,8 +162,5 @@ body {
     }
     .details-title {
         font-size: 3.5vh;       
-    }
-    .thumbnails-list {
-        width: calc( var(--thumbnails-img-width) + 4vw);
-    }
+    }    
 }
