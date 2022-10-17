@@ -14,7 +14,7 @@
     --details-title-height: 20vh;
     --thumbnails-img-width: 20vw;
     --thumbnails-img-height: 25vw;
-    --thumbnails-title-height: calc( var(--thumbnails-img-height) * 0.4);
+    --thumbnails-title-height: calc( var(--thumbnails-img-height) * 0.3);
     --thumbnails-year-height: calc( var(--thumbnails-img-height) * 0.2) ;
 }
 body, html {
@@ -113,8 +113,8 @@ body {
 .thumbnails-title {
     background-color: skyblue;  
     display: block;
-    text-align: center;
     height: var(--thumbnails-title-height);
+    font-size: calc( var(--thumbnails-title-height) * 0.5);
     font-family: lakeshore;         
 }
 .thumbnails-year {

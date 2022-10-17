@@ -12,4 +12,3 @@ for(let i = 0; i < anchors.length; i++) {
         setDetails(anchors[i]);
     })
 }
-
