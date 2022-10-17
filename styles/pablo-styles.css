@@ -99,24 +99,26 @@ body {
     border-radius: 6%;    
     text-align: center; 
     background-color: brown;
-    overflow: hidden;            
+    overflow: hidden; 
 }
 .thumbnails-anchor {
     text-decoration: none;
     color: brown;          
 }
 .thumbnails-image {
-    display: block;
+    display: flex;
     width: var(--thumbnails-img-width);
     height: var(--thumbnails-img-height);           
 }
 .thumbnails-title {
     background-color: skyblue;  
-    display: block;
+    display: flex;
     height: var(--thumbnails-title-height);
     font-size: calc( var(--thumbnails-title-height) * 0.5);
-    font-family: lakeshore;         
-}
+    font-family: lakeshore;
+    justify-content: center;
+    align-items: center;           
+} 
 .thumbnails-year {
     display: block;
     text-align: center;
@@ -162,5 +164,6 @@ body {
     }
     .details-title {
         font-size: 3.5vh;       
-    }    
+    }
+        
 }
