@@ -16,6 +16,7 @@
     --thumbnails-img-height: 25vw;
     --thumbnails-title-height: calc( var(--thumbnails-img-height) * 0.3);
     --thumbnails-year-height: calc( var(--thumbnails-img-height) * 0.2) ;
+    --wide: 2;
 }
 body, html {
     height: 100%;
@@ -42,12 +43,26 @@ body {
     align-items: center;
     flex-grow: 1;
 }
+.hidden.main-class{
+    --thumbnails-img-width: 30vw;
+    --thumbnails-img-height: 40vw;
+}
 .details-container { 
     display: flex;
     flex-direction: column;  
 }
+.hidden .details-container {
+    display: none;
+}
 .div-details-container {
     position: relative;
+}
+.hide-button {
+    color: brown;
+    background-color: skyblue;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 .details-image {
     width: var(--details-img-width);
@@ -61,7 +76,7 @@ body {
     color: brown;
     background-color: skyblue;
     width: var(--details-img-width);
-    font-size: 1em;
+    font-size: calc( var(--details-img-height) * 0.1);
     font-family: airstream;
     position: absolute;
     top: 80%;
@@ -74,10 +89,10 @@ body {
     color: skyblue;
     background: brown;
     width: var(--details-img-width);
-    font-size: 1em;
+    font-size: calc( var(--details-img-height) * 0.08);
     font-family: airstream;
     position: absolute;
-    top: 2vh;
+    top: 88%;
     right: -2vh;
     border-radius: 2px;
 }
@@ -86,10 +101,14 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: 25vh;
+    max-height: 40vh;
     overflow-y: auto;
     justify-content: space-around;
     padding: 0;    
+}
+.hidden .thumbnails-list {
+    max-height: 80vh;
+    margin-bottom: 10vh;
 }
 .thumbnails-item {
     max-width: var(--thumbnails-img-width);
@@ -101,6 +120,9 @@ body {
     background-color: brown;
     overflow: hidden; 
 }
+.wide.thumbnails-item {
+    max-width: calc (var(--thumbnails-img-width) * var(--wide));
+}
 .thumbnails-anchor {
     text-decoration: none;
     color: brown;          
@@ -109,6 +131,9 @@ body {
     display: flex;
     width: var(--thumbnails-img-width);
     height: var(--thumbnails-img-height);           
+}
+.wide .thumbnails-image {
+    width: calc( var(--thumbnails-img-width) * var(--wide));
 }
 .thumbnails-title {
     background-color: skyblue;  
@@ -120,11 +145,13 @@ body {
     align-items: center;           
 } 
 .thumbnails-year {
-    display: block;
-    text-align: center;
+    display: flex;
     color: skyblue;
     height: var(--thumbnails-year-height);
+    font-size: calc( var(--thumbnails-year-height) * 0.8);
     font-family: airstream;
+    justify-content: center;
+    align-items: center;
 }
 .thumbnails-item:hover {
     transform: scale(1.1);
