@@ -49,7 +49,8 @@ body {
 }
 .details-container { 
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
+    transition: 3.5s ease;  
 }
 .hidden .details-container {
     display: none;
@@ -157,6 +158,10 @@ body {
     transform: scale(1.1);
     margin-left: 10px;    
 }
+.is-point {
+    transform: scale(0.001);
+    transition: 0s;
+}
 @media (min-width: 560px) {
     :root {
         --details-img-width: 60vh;
@@ -201,6 +206,7 @@ body {
         font-size: calc( var(--details-img-height) * 0.06);
         top: 89%
     } 
+
 }
 @media (min-width: 900px) {
     :root {
