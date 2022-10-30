@@ -1,13 +1,14 @@
 function sumDigits(number) {
     if(number < 0)
-    number = -number; 
+    number = Math.abs(number);
+    number = Math.trunc(number);
     let sum = 0;
     do {
-        number = Math.floor(number);
-        sum += number % 10;
-        number /= 10;     
+        let digit = number % 10;
+        number = (number - digit) /10; 
+        sum += digit;             
     }
-    while(number >= 1);
+    while(number != 0);
     return sum; 
 }
 console.log(sumDigits(-1236.61));
