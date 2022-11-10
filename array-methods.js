@@ -43,28 +43,15 @@ return importArD;
 // move(numbers,2,4)->numbers=[1,2,4,5,6,7,3]. (element at index 2 (3) is moved on 4 positions right) 
 // Note: all examples imply the original array of numbers ( let numbers=[1,2,3,4,5,6,7])
 function move(numbers,index,offset) {
-    let position = index + offset;
-    if(position < index) {
-    let moveNumbers = numbers.slice(position, index);
-    numbers[position] = numbers[index];
-    for(let i = 0;i < Math.abs(offset); i++) {
-    numbers.splice(position + 1 + i, 1, moveNumbers[i]);    
-    }
-    }
-    else {
-        let moveNumbers = numbers.slice(index+1, position+1);
-    numbers[position] = numbers[index];
-    for(let i = 0;i < Math.abs(offset); i++) {
-    numbers.splice(index + i, 1, moveNumbers[i]); 
-    }
-    }
+    let movNum = numbers.splice(index, 1)[0];
+    numbers.splice(index + offset, 0, movNum);
     return numbers;
 
 }
 
 let numbers=[1,2,3,4,5,6,7];
 let index = 3;
-let offset = -2;
+let offset = 2;
 console.log(move(numbers, index, offset));
 
 let arS = [1,2,3,4,5,6,7]; 
