@@ -1,0 +1,29 @@
+body {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input {
+    margin-top: 2vw;
+}
+.word-guess {
+    display: flex;
+    flex-direction: row;    
+}
+.letter-guess {
+    font-size: 1.5em;
+    margin: 1vw;
+    background-color: lightskyblue;
+    width: 3.5vw;
+    text-align: center;
+}
+.count-down {
+    color: blueviolet;
+    margin: 1vw;
+}
+.win-alert {
+    color: brown;
+    margin: 1vw;
+    
+
+}
