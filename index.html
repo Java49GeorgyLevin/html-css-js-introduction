@@ -18,19 +18,18 @@
     <section class="congratulation">
         <div class="win-alert">Guess the letters, name the word.</div>
     </section> 
-    <section class="question"></section>   
-    <button class="play-again" onclick="playAgain()">Play again!</button>
+    <section class="question"></section>    
     <section class="input">
-        <div>
-            <input type="text" onchange="onChangeLetter(event)" class="input-letter">
+        <div class="input-letter">
+            <input type="text" onchange="onChangeLetter(event)">
             <span>Enter one letter.</span> 
         </div>
-        <div>
-            <input type="text" onchange="onChangeWord(event)" class="input-word">
+        <div class="input-word">
+            <input type="text" onchange="onChangeWord(event)">
             <span>Enter the whole word.</span>
-        </div>
-    
+        </div>    
     </section>
+    <button class="play-again" onclick="playAgain()">Play again!</button>
     </main>
     <footer>
         <div class="what-word"></div>

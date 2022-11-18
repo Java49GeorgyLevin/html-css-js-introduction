@@ -9,7 +9,7 @@ N = chooseWord();
 word = bankWords[N];
 question = bankQuestions[N];
 N_LETTERS = word.length;
-const TRIALS = 5;
+const TRIALS = 3;
 nTry = TRIALS;
 const whatW = document.querySelector(".what-word")
 // const letterElements = document.querySelectorAll(".letter-guess") //
@@ -18,7 +18,7 @@ const tryingLeft = document.querySelector(".count-down")
 const victoryMessage = document.querySelector(".win-alert")
 const HIDDEN = "hidden";
 const OPEN = "open";
-const inputW = document.querySelector(".input")
+//const inputW = document.querySelector(".input")
 const pA = document.querySelector(".play-again")
 const QST = document.querySelector(".question")
 QST.innerHTML = question;
@@ -41,84 +41,113 @@ function onChangeLetter(event) {
     event.target.value='';
     if (letterGuess.length != 1) {
         alert('You only need to enter one letter.');
-        --nTry;
-        countDown(nTry);
+        // --nTry;
+        // countDown(nTry);
     } else {
-        const wordAr = Array.from(word);
-        victoryMessage.innerHTML = wordAr;
-        const letterElements = document.querySelectorAll(".letter-guess")
-        wordAr.map((l, i) => {
-            if(l === letterGuess) {
-            letterElements[i].classList.add(OPEN);                
-            }
-        })
+        openFields(letterGuess);
+
+
+    //     const wordAr = Array.from(word);
+    //  //   victoryMessage.innerHTML = wordAr;
+    //     const letterElements = document.querySelectorAll(".letter-guess")
+    //     wordAr.map((l, i) => {
+    //         if(l === letterGuess) {
+    //         letterElements[i].classList.add(OPEN);                
+        //     }
+        // })
     }
+    --nTry;
+    countDown(nTry);
 }
-    //         letterElements[i].innerHTML = l)
-    //     const colors = wordAr.map((l, i) => {
-    //        let index = word.indexOf(l);
-    //        let res = 'red';
-    //         if(index  > -1) {
-    //         res = l == word[i] ? 'green' : 'yellow'
-    //         }           
-    //         return res;
-    //     })
-    //     colors.forEach((c, i) =>
-    //      letterElements[i].style.color=c);
-    //      winAlert(wordGuess);
-    // }
 
-
-
-function onChange(event) {
-    whatW.innerHTML = `(${word} :בדיקה)`;
+function onChangeWord(event) {
+  //  whatW.innerHTML = `(${word} :בדיקה)`;
     const wordGuess = event.target.value;
     event.target.value='';
     if (wordGuess.length != N_LETTERS) {
         alert(`A word should contain ${N_LETTERS} letters`);
-        --nTry;
-        countDown(nTry);
+        loose();
     } else {
-        const wordAr = Array.from(wordGuess);
-        wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
-        const colors = wordAr.map((l, i) => {
-           let index = word.indexOf(l);
-           let res = 'red';
-            if(index  > -1) {
-            res = l == word[i] ? 'green' : 'yellow'
-            }           
-            return res;
-        })
-        colors.forEach((c, i) =>
-         letterElements[i].style.color=c);
-         winAlert(wordGuess);
+        
+
+        const wordGuessAr = Array.from(wordGuess);
+        wordGuessAr.forEach((l, i) => openFields(l));
+        wordGuess === word ? winAlert() : loose();
+        pA.classList.remove(HIDDEN);
+
+
+        // wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
+        // const colors = wordAr.map((l, i) => {
+        //    let index = word.indexOf(l);
+        //    let res = 'red';
+        //     if(index  > -1) {
+        //     res = l == word[i] ? 'green' : 'yellow'
+        //     }           
+        //     return res;
+        // })
+        // colors.forEach((c, i) =>
+        //  letterElements[i].style.color=c);
+        //  winAlert(wordGuess);
     }
 }
 
+
+
+// function onChange(event) {
+//     whatW.innerHTML = `(${word} :בדיקה)`;
+//     const wordGuess = event.target.value;
+//     event.target.value='';
+//     if (wordGuess.length != N_LETTERS) {
+//         alert(`A word should contain ${N_LETTERS} letters`);
+//         --nTry;
+//         countDown(nTry);
+//     } else {
+//         const wordAr = Array.from(wordGuess);
+//         wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
+//         const colors = wordAr.map((l, i) => {
+//            let index = word.indexOf(l);
+//            let res = 'red';
+//             if(index  > -1) {
+//             res = l == word[i] ? 'green' : 'yellow'
+//             }           
+//             return res;
+//         })
+//         colors.forEach((c, i) =>
+//          letterElements[i].style.color=c);
+//          winAlert(wordGuess);
+//     }
+// }
+
 function countDown(lTry) {
-    tryingLeft.innerHTML = `You have ${lTry} trials.`
+    tryingLeft.innerHTML = `You have ${lTry} trials for letters.`
     if(lTry == 0) {
-        victoryMessage.innerHTML = 'You are loose : (';
-        clean();
+        victoryMessage.innerHTML = 'Enter the whole word.';
+        document.querySelector('.input-letter').classList.add(HIDDEN);
+        // clean();
     }        
 }
 
-function winAlert(wordGuess) {
-    if(wordGuess === word) {
+function winAlert() {
+    // if(wordGuess === word) {
         victoryMessage.innerHTML = 'You are win!';
-        clean(); 
-    }
-    else {
-        victoryMessage.innerHTML = 'Try again!';
-        --nTry;
-        countDown(nTry);
-    }    
+        // clean(); 
+    // }
+    // else {
+        // victoryMessage.innerHTML = 'Try again!';
+        // --nTry;
+        // countDown(nTry);
+    // }    
+}
+
+function loose() {
+    victoryMessage.innerHTML('You are loose :(');
+    // clean();
 }
 
 function clean() {
     tryingLeft.innerHTML = '';
-    inputW.classList.add(HIDDEN);
-    pA.classList.remove(HIDDEN);
+    // inputW.classList.add(HIDDEN);
+    // pA.classList.remove(HIDDEN);
     nTry = TRIALS;
   //  chooseWord();
 }
@@ -138,6 +167,19 @@ function playAgain() {
     tryingLeft.innerHTML = `You have ${TRIALS} trials.`
     chooseWord();
     pA.classList.add(HIDDEN);
-    inputW.classList.remove(HIDDEN);
+    // inputW.classList.remove(HIDDEN);
     whatW.innerHTML = `(${word} :בדיקה)`;
+}
+
+function openFields(letterGuess) {
+    const wordAr = Array.from(word);
+    const letterElements = document.querySelectorAll(".letter-guess");
+   // let j = 0;
+    wordAr.map((l, i) => {
+            if(l === letterGuess) {
+            letterElements[i].classList.add(OPEN);
+     //       ++j;                
+            }
+        })
+   // return j;
 }

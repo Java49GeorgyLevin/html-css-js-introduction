@@ -54,6 +54,9 @@ span {
 .input.hidden {
     display: none;
 }
+.input-letter.hidden {
+    display: none;
+}
 .play-again.hidden {
     display: none;
 }
