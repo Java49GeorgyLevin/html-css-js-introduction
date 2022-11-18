@@ -1,11 +1,18 @@
-const word = "puppy"
+const bankWords = ['puppy', 'apple', 'hyppo', 'hypno']
+word = chooseWord();
 const N_LETTERS = 5;
 const TRIALS = 6;
 nTry = TRIALS;
+const whatW = document.querySelector(".what-word")
 const letterElements = document.querySelectorAll(".letter-guess")
 const tryingLeft = document.querySelector(".count-down")
 const victoryMessage = document.querySelector(".win-alert")
+const HIDDEN = "hidden";
+const inputW = document.querySelector(".input")
+const pA = document.querySelector(".play-again")
+pA.classList.add(HIDDEN);
 function onChange(event) {
+    whatW.innerHTML = `(${word} :בדיקה)`;
     const wordGuess = event.target.value;
     event.target.value='';
     if (wordGuess.length != N_LETTERS) {
@@ -14,21 +21,18 @@ function onChange(event) {
         countDown(nTry);
     } else {
         const wordAr = Array.from(wordGuess);
-        winAlert(wordGuess);
-
         wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
         const colors = wordAr.map((l, i) => {
            let index = word.indexOf(l);
            let res = 'red';
-            if(wordAr[i] == Array.from(word)[i]) {
-                res = 'green';
-            } else if(index  > -1) { 
-                res = 'yellow'
+            if(index  > -1) {
+            res = l == word[i] ? 'green' : 'yellow'
             }           
             return res;
         })
         colors.forEach((c, i) =>
          letterElements[i].style.color=c);
+         winAlert(wordGuess);
     }
 }
 
@@ -54,5 +58,27 @@ function winAlert(wordGuess) {
 
 function clean() {
     tryingLeft.innerHTML = '';
+    inputW.classList.add(HIDDEN);
+    pA.classList.remove(HIDDEN);
     nTry = TRIALS;
+  //  chooseWord();
+}
+
+function chooseWord() {
+word = bankWords[Math.floor(Math.random() * bankWords.length)]
+return word;
+}
+function playAgain() {
+    victoryMessage.innerHTML = '';
+    document.querySelectorAll(".letter-guess").innerHTML = '?';
+
+    for(let i = 0; i < letterElements.length; i++) {
+        letterElements[i].innerHTML = '';
+    }    
+    
+    tryingLeft.innerHTML = `You have ${TRIALS} trials.`
+    chooseWord();
+    pA.classList.add(HIDDEN);
+    inputW.classList.remove(HIDDEN);
+    whatW.innerHTML = `(${word} :בדיקה)`;
 }

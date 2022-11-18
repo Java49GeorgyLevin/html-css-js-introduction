@@ -1,7 +1,11 @@
+body, html {
+    height: 100%;
+}
 body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 .input {
     margin-top: 2vw;
@@ -24,6 +28,14 @@ body {
 .win-alert {
     color: brown;
     margin: 1vw;
-    
-
+}
+.input.hidden {
+    display: none;
+}
+.play-again.hidden {
+    display: none;
+}
+.what-word {
+    position: absolute;
+    bottom: 10vh;
 }
