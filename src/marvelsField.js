@@ -1,4 +1,4 @@
-const bankWords = ['empire', 'aroque', 'rococo', 'modern']
+const bankWords = ['empire', 'baroque', 'rococo', 'modern']
 const bankQuestions = [
     "An early-nineteenth-century design movement in architecture, furniture, other decorative arts, and the visual arts, representing the second phase of Neoclassicism. It flourished between 1800 and 1815 during the Consulate and the First French Empire periods, although its life span lasted until the late-1820's.",
     "A style of architecture, music, dance, painting, sculpture, poetry, and other arts that flourished in Europe from the early 17th century until the 1750's.",
@@ -8,19 +8,68 @@ const bankQuestions = [
 N = chooseWord();
 word = bankWords[N];
 question = bankQuestions[N];
-const N_LETTERS = 5;
-const TRIALS = 6;
+N_LETTERS = word.length;
+const TRIALS = 5;
 nTry = TRIALS;
 const whatW = document.querySelector(".what-word")
-const letterElements = document.querySelectorAll(".letter-guess")
+// const letterElements = document.querySelectorAll(".letter-guess") //
+const sectionElement = document.querySelector(".word-guess")
 const tryingLeft = document.querySelector(".count-down")
 const victoryMessage = document.querySelector(".win-alert")
 const HIDDEN = "hidden";
+const OPEN = "open";
 const inputW = document.querySelector(".input")
 const pA = document.querySelector(".play-again")
 const QST = document.querySelector(".question")
 QST.innerHTML = question;
+//letterElements.innerHTML = 
+sectionElement.innerHTML = getDivsElements(); //
 pA.classList.add(HIDDEN);
+
+function getDivsElements() {
+    //let index = Math.floor(Math.random() * words.length);
+    //let wordField = words[index];
+    let wordAr = Array.from(word);
+    let res = wordAr.map(letter => `<div class="letter-guess">${letter}</div>`);
+    return res.join('');
+}
+
+function onChangeLetter(event) {
+    whatW.innerHTML = `(${word} :בדיקה)`;
+    const letterGuess = event.target.value;
+    // victoryMessage.innerHTML = letterGuess;
+    event.target.value='';
+    if (letterGuess.length != 1) {
+        alert('You only need to enter one letter.');
+        --nTry;
+        countDown(nTry);
+    } else {
+        const wordAr = Array.from(word);
+        victoryMessage.innerHTML = wordAr;
+        const letterElements = document.querySelectorAll(".letter-guess")
+        wordAr.map((l, i) => {
+            if(l === letterGuess) {
+            letterElements[i].classList.add(OPEN);                
+            }
+        })
+    }
+}
+    //         letterElements[i].innerHTML = l)
+    //     const colors = wordAr.map((l, i) => {
+    //        let index = word.indexOf(l);
+    //        let res = 'red';
+    //         if(index  > -1) {
+    //         res = l == word[i] ? 'green' : 'yellow'
+    //         }           
+    //         return res;
+    //     })
+    //     colors.forEach((c, i) =>
+    //      letterElements[i].style.color=c);
+    //      winAlert(wordGuess);
+    // }
+
+
+
 function onChange(event) {
     whatW.innerHTML = `(${word} :בדיקה)`;
     const wordGuess = event.target.value;
