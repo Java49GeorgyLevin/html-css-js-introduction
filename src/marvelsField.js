@@ -1,5 +1,13 @@
-const bankWords = ['puppy', 'apple', 'hyppo', 'hypno']
-word = chooseWord();
+const bankWords = ['empire', 'aroque', 'rococo', 'modern']
+const bankQuestions = [
+    "An early-nineteenth-century design movement in architecture, furniture, other decorative arts, and the visual arts, representing the second phase of Neoclassicism. It flourished between 1800 and 1815 during the Consulate and the First French Empire periods, although its life span lasted until the late-1820's.",
+    "A style of architecture, music, dance, painting, sculpture, poetry, and other arts that flourished in Europe from the early 17th century until the 1750's.",
+    "An exceptionally ornamental and theatrical style of architecture, art and decoration which combines asymmetry, scrolling curves, gilding, white and pastel colours, sculpted moulding, and trompe-l'œil frescoes to create surprise and the illusion of motion and drama.",
+    "A style of architecture, art, and design that first emerged in the United Kingdom in the mid-1880's."
+]
+N = chooseWord();
+word = bankWords[N];
+question = bankQuestions[N];
 const N_LETTERS = 5;
 const TRIALS = 6;
 nTry = TRIALS;
@@ -10,6 +18,8 @@ const victoryMessage = document.querySelector(".win-alert")
 const HIDDEN = "hidden";
 const inputW = document.querySelector(".input")
 const pA = document.querySelector(".play-again")
+const QST = document.querySelector(".question")
+QST.innerHTML = question;
 pA.classList.add(HIDDEN);
 function onChange(event) {
     whatW.innerHTML = `(${word} :בדיקה)`;
@@ -65,9 +75,9 @@ function clean() {
 }
 
 function chooseWord() {
-word = bankWords[Math.floor(Math.random() * bankWords.length)]
-return word;
+return Math.floor(Math.random() * bankWords.length);
 }
+
 function playAgain() {
     victoryMessage.innerHTML = '';
     document.querySelectorAll(".letter-guess").innerHTML = '?';

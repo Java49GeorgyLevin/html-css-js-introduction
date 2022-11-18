@@ -6,27 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
-    <link rel="stylesheet" href="styles/wordle.css">
+    <link rel="stylesheet" href="styles/marvelsField.css">
 </head>
 <body>
-    <input type="text" onchange="onChange(event)" class="input">
+    <main>
+    <!-- <input type="text" onchange="onChange(event)" class="input"> -->
     <section class="word-guess">
+        <!-- <div class="letter-guess"></div>
         <div class="letter-guess"></div>
         <div class="letter-guess"></div>
         <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
-        <div class="letter-guess"></div>
+        <div class="letter-guess"></div> -->
     </section>
     <section class="count">
-        <div class="count-down">Guess the word.</div>
+        <div class="count-down">Marvels Field.</div>
     </section>
     <section class="congratulation">
-        <div class="win-alert">Let's begin!</div>
-    </section>    
+        <div class="win-alert">Guess the letters, name the word.</div>
+    </section> 
+    <section class="question"></section>   
     <button class="play-again" onclick="playAgain()">Play again!</button>
-    <section>
-        <div class="what-word"></div>
+    <section class="input">
+        <div>
+            <input type="text" onchange="onChangeLetter(event)" class="input-letter">
+            <span>Enter one letter.</span> 
+        </div>
+        <div>
+            <input type="text" onchange="onChangeWord(event)" class="input-word">
+            <span>Enter the whole word.</span>
+        </div>
+    
     </section>
-   <script src="src/wordle.js"></script> 
+    </main>
+    <footer>
+        <div class="what-word"></div>
+    </footer>
+    <script src="src/marvelsField.js"></script> 
 </body>
 </html>

@@ -39,3 +39,6 @@ body {
     position: absolute;
     bottom: 10vh;
 }
+.question {
+    width: 50vw;
+}
