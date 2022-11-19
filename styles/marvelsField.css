@@ -36,7 +36,7 @@ span {
 .letter-guess {
     font-size: 1.5em;
     margin: 1vw;
-    background-color: lightskyblue;
+    background-color: black;
     width: 3.5vw;
     text-align: center;
 }
@@ -66,4 +66,8 @@ span {
 }
 .question {
     width: 50vw;
+}
+.play-again {
+    color: white;
+    background-color: brown;
 }
