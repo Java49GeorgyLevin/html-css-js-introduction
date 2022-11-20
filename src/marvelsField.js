@@ -18,6 +18,7 @@ const QST = document.querySelector(".question")
 input.classList.add(HIDDEN);
 
 function playAgain() {
+    victoryMessage.innerHTML = '';
     tryingLeft.innerHTML = `You have ${TRIALS} trials for letters.`
     N = chooseWord();
     word = bankWords[N];
@@ -85,9 +86,7 @@ function clean() {
     pA.classList.remove(HIDDEN);
     input.classList.add(HIDDEN);
     tryingLeft.innerHTML = '';
-    QST.innerHTML = '';
-    victoryMessage = '';
-    
+    QST.innerHTML = '';    
 }
 
 function chooseWord() {
