@@ -34,11 +34,13 @@ span {
     flex-direction: row;    
 }
 .letter-guess {
-    font-size: 1.5em;
+    font-size: 6vw;
     margin: 1vw;
     background-color: black;
-    width: 3.5vw;
     text-align: center;
+    width: 8vw;
+    height: 8vw;
+    justify-content: top;
 }
 .letter-guess.open {
     background-color: bisque;
@@ -57,12 +59,19 @@ span {
 .input-letter.hidden {
     display: none;
 }
+.input-letter input {
+    width: 8vw;
+}
+.input-word input {
+    width: 40vw;
+}
 .play-again.hidden {
     display: none;
 }
 .what-word {
     position: absolute;
-    bottom: 10vh;
+    bottom: 2vh;
+    right: 2vh;
 }
 .question {
     width: 50vw;
