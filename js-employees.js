@@ -88,40 +88,31 @@ function getEmployeesBySalary(employees, salaryFrom, salaryTo) {
 // 4.1.5.1.	Apply “filter” and “map”
 
 function increaseSalary(employees, borderSalary, percent) {
-    employees.map(empl => {
-        if(empl.salary < borderSalary) {
-            empl.salary *= (1 + percent / 100);
-            empl.salary = Math.round(empl.salary);
-        }
-        return empl.salary;
-    })
-    return employees;
+        employees.filter(empl => empl.salary < borderSalary).map(empl => {
+        empl.salary *= (1 + percent / 100);
+        empl.salary = Math.round(empl.salary);
+        return empl;    
+    });
 
- //  return  employees.filter(empl => empl.salary < borderSalary)
-   //     .map(empl => Math.floor(empl.salary * (1 + percent / 100)));
-
-          //  return employees;
-
+           return employees;
 }
 
-
-let nEmployees = 10;
+let nEmployees = 6;
 let idDigits = 4;
 let minSalary = 5500;
-let maxSalary = 15000
+let maxSalary = 16000
 let minBirthYear = 1942;
 let maxBirthYear = 2004;
-let salaryFrom = 10000;
-let salaryTo = 12000;
-let borderSalary = 9000; 
+let salaryFrom = 9000;
+let salaryTo = 14000;
+let borderSalary = 8000; 
 let percent = 10;
 
 const employees = createRandomEmployees(nEmployees, idDigits, minSalary, maxSalary, minBirthYear, maxBirthYear);
-console.log(employees);
-const averageAge = getAverageAge(employees);
-// console.log(averageAge);
+console.log('Arrey of employees', employees);
+const averageAge = getAverageAge(employees); 
+console.log('Average age:',averageAge);
 const getEmployeesBy = getEmployeesBySalary(employees, salaryFrom, salaryTo);
-// console.log(getEmployeesBy);
-const afterIncreaseSalary = increaseSalary(employees, borderSalary, percent);
-console.log(afterIncreaseSalary);
-// console.log(employees);
+console.log('Get employees by salary:', getEmployeesBy);
+increaseSalary(employees, borderSalary, percent);
+console.log('After increase salary', employees);
