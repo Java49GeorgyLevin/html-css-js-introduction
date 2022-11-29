@@ -5,18 +5,14 @@ const ulElement = document.querySelector(".movies-list");
 const singleBestElement = document.querySelector(".best-movie");
 const singleWorseElement = document.querySelector(".worse-movie");
 const sectionElements = document.querySelectorAll("section");
-// ulElement.innerHTML = getAllMovies();
-
 
 function show(index) {
     sectionElements.forEach(section => section.hidden = true);
     sectionElements[index].hidden = false;
-    // ulElement.innerHTML = 
     whichSection(index);
 }
 
 function whichSection(index) {
-    // let foo = '';
     switch(index) {
         case 0: ulElement.innerHTML = getAllMovies();
         break;
@@ -24,7 +20,6 @@ function whichSection(index) {
         break;
         case 2: singleWorseElement.innerHTML = getWorseMovie();
     }
-    // return foo;
 }
 
 function getAllMovies() {
@@ -36,22 +31,15 @@ function getAllMovies() {
 function getBestMovie() {
     const bestMovie = moviesData.results.reduce((best, movie) => {
        return movie.popularity > best.popularity ? movie : best;
-    //    return bestMovie;
     })
     return getMovieDetails(bestMovie);
 
 }
 function getWorseMovie() {
-    const worseMovie = moviesData.results.reduce((res, movie) => {
-        res = movie.popularity < res.popularity ? movie : res;
-        // singleWorseElement.innerHTML = JSON.stringify(res);
-        return res;
+    const worseMovie = moviesData.results.reduce((worse, movie) => {
+        return movie.popularity < worse.popularity ? movie : worse;
     })
-    // singleWorseElement.innerHTML = JSON.stringify(worseMovie) + '!1';
-    // singleWorseElement.innerHTML = getMovieDetails(worseMovie) + '!2';
     return getMovieDetails(worseMovie);
-    // .join('');
-
 }
 
 function getMovieDetails(movie) {
