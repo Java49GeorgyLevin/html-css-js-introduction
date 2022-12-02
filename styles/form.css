@@ -1,0 +1,41 @@
+:root {
+    --width-form: 40vw;
+}
+.form-class {
+    display: flex;
+    flex-direction: column;
+}
+.two-inputs {
+    display: flex;
+    justify-content: space-around;
+    width: var(--width-form);
+    margin-top: 5vh;
+}
+.date-label {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column; 
+    height: 10vh;
+    justify-content: space-around;
+}
+.buttons {
+    width: var(--width-form);
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10vh;
+}
+.date-label {
+    width: var(--width-form);
+}
+.red-border {
+    border-color: red;
+}
+.green-border {
+    border-color: greenyellow;
+}
+.alert {
+    color: red;
+    margin: 4vh;
+    text-align: center;
+    width: var(--width-form);
+}
