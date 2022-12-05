@@ -1,16 +1,14 @@
-const currentYear = new Date().getFullYear();
-const earliestYear = 1950;
-const minSalary = 1000;
-const maxSalary = 40000;
-const RED_BORDER = "red-border";
-const GREEN_BORDER = "green-border";
-const warning = document.querySelector(".alert");
 const inputElements = document.querySelectorAll(".form-class [name]");
-const timeout = 5000;
+const MIN_SALARY = 1000;
+const MAX_SALARY = 40000;
+const MIN_YEAR = 1950;
+const maxYear = getMaxYear();
+const TIME_OUT_ERROR_MESSAGE = 5000;
+const ERROR_CLASS = "error";
+const company = new Company();
 
-// inputElements.classList.add(GREEN_BORDER);
-// document.querySelectorAll(".form-class [id]").add(GREEN_BORDER);
-// почему не работают такие выражения?
+const dateErrorElement = document.getElementById("date_error");
+const salaryErrorElement = document.getElementById("salary_error");
 
 function onSubmit(event) {
     event.preventDefault();
@@ -18,78 +16,62 @@ function onSubmit(event) {
     const employee = Array.from(inputElements).reduce(
         (res, cur) => {
             res[cur.name] = cur.value;
-
-            // console.log('cur', cur);
-            // console.log('res', res);
-            // Почему уже при первом проходе reduce объект res содержит все данные?
-            // console.log('cur.name', cur.name);
-            // console.log('cur.value', cur.value);
-
             return res;
         }, {}
     )
     console.log(employee)
+    company.hireEmployee(employee);
+    
 }
 function onChange(event) {
-    const param = event.target.name;
-    event.target.classList.remove(RED_BORDER);
-    const magnitude = event.target.value;
-    let check = paramSelector(param, magnitude);
 
-    if(check == false) {
-        event.target.classList.add(RED_BORDER);        
-        event.target.value='';
+    if (event.target.name == "salary") {
+        validateSalary(event.target)
+    } else if (event.target.name == "birthDate") {
+        validateBirthdate(event.target);
     }
 }
-
-function paramSelector(param, magnitude) {
-    let check = true;
-    switch(param) {
-        case "employee_name": check = checkEmployeeName(magnitude);
-        break;
-        case "birthDate": check = checkbirthDate(magnitude);
-        break;
-        case "salary": check = checkSalary(+magnitude);
-        break;
+function validateSalary(element) {
+    const value = +element.value;
+    if (value < MIN_SALARY || value > MAX_SALARY) {
+        const message = value < MIN_SALARY ? `salary must be ${MIN_SALARY} or greater`
+            : `salary must be ${MAX_SALARY} or less`;
+        showErrorMessage(element, message, salaryErrorElement);
     }
-    return check;
+
+}
+function validateBirthdate(element) {
+    const value = +element.value.slice(0, 4);
+    if (value < MIN_YEAR || value > maxYear) {
+        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater`:
+             `year must be ${maxYear} or less`;
+        showErrorMessage(element, message, dateErrorElement) ;    
+
+    }
+
+}
+function showErrorMessage(element, message, errorElement) {
+    element.classList.add(ERROR_CLASS);
+    errorElement.innerHTML = message;
+    setTimeout(() => {
+        element.classList.remove(ERROR_CLASS);
+        element.value = ''; 
+        errorElement.innerHTML = '';
+    }, TIME_OUT_ERROR_MESSAGE);
 }
 
-function checkEmployeeName(magnitude) {
-    let check = true;
-    if(magnitude.length < 1 ||
-        magnitude.substring(0, 1) == ' ') {
-        check = false;
-        warningMessage(`Entered <b>name</b> is wrong.<br>
-        The name must contain at least one letter.`);
-    }
-    return check;
+function getMaxYear() {
+    return new Date().getFullYear();
 }
-
-function checkbirthDate(magnitude) {
-    let check = true;
-    if(+magnitude.slice(0, 4) < earliestYear ||
-        +magnitude.slice(0, 4) > currentYear) {
-        check = false;
-        warningMessage(`Entered value of <b>birthyear</b> is wrong.<br>
-        The value must be between ${earliestYear} & ${currentYear}.`);
-    }
-    return check;
+function Company() {
+    this.employees = [];
 }
-
-function checkSalary(magnitude) {
-    let check = true;
-    if(magnitude < minSalary || magnitude > maxSalary){
-        check = false;
-        warningMessage(`Entered value of <b>salary</b> is wrong.<br>
-        The value must be between ${minSalary} & ${maxSalary}.`);
-    }
-    return check;
+Company.prototype.hireEmployee = function(employee) {
+    this.employees.push(employee);
 }
-
-function warningMessage(str) {
-    warning.innerHTML = str;
-    setTimeout(() =>  {
-        warning.innerHTML = '';
-    }, timeout);
+Company.prototype.getAllEmployees = function(){
+    return this.employees;
+}
+Company.prototype.getEmployeesBySalary = function(salaryFrom, salaryTo) {
+    //TODO
 }
