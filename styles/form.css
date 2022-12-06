@@ -31,12 +31,35 @@ body, html {
     display: flex;
     justify-content: space-around;
     margin-top: 10vh;
-    width: 40vw;
-    
+    width: 40vw;    
 }
 .error {
     border-color: red;
     color: red;
 }
 
-
+.active-button {
+    border-color: aquamarine;
+}
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+}
+.menu-button {
+    margin: 4vh;
+    width: 15vw;
+}
+.cart {
+    background-color: aquamarine;
+    width: 40vw;
+}
+.list-all-employees {
+    overflow-y: scroll;
+}
+.cart p {
+    border: 1px;
+    border-color: black;
+}
+li {
+    list-style: none;
+}

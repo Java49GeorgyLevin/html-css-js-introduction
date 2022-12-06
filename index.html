@@ -11,8 +11,14 @@
 
 <body>
     <header class="form-title">
-        Employee Form
+        Employees Company Forms
     </header>
+    <div class="menu-buttons">
+        <button onclick="showMenu(0)" class="menu-button">Add employee Form</button>
+        <button onclick="showMenu(1)" class="menu-button">All employees Form</button>
+        <button onclick="showMenu(2)" class="menu-button">Employees by salary Form</button>
+    </div>
+    <section class="add-employee" hidden>
     <form id="employee_form" onsubmit="onSubmit(event)" class="form-class">
         <div class="two-inputs">
             <input type="text" name="employee_name" required placeholder="Enter employee name">
@@ -38,15 +44,36 @@
              onchange="onChange(event)" required>
              
         </div>
-        <p id="salary_error" class="error"></p> 
+        <p id="salary_error" class="error"></p>
+        <p id="the-employee-added"></p> 
         <div class="buttons">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
         </div>
-
-
-
     </form>
+    </section>
+
+    <section class="list-all-employees" hidden>       
+        <ul class="all-employees">
+        </ul>
+    </section>
+
+    <section class="list-salary-employees" hidden>
+        <form id="min-max-salary" onsubmit="salaryMinMax(event)">
+            <input type="number" name="salary-from" placeholder="Enter salary from">
+            <input type="number" name="salary-to" placeholder="Enter salary to">
+            <p id="min-max-salary-error" class="min-max-error"></p>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <ul class="salary-employees">
+        </ul>
+    </section>
+
+
+
     <script src="src/form.js"></script>
 </body>
 
