@@ -60,8 +60,8 @@
 
     <section class="list-salary-employees" hidden>
         <form id="min-max-salary" onsubmit="salaryMinMax(event)">
-            <input type="number" name="salary-from" placeholder="Enter salary from">
-            <input type="number" name="salary-to" placeholder="Enter salary to">
+            <input type="number" name="salary-from" placeholder="Enter salary from" onchange="salaryMin(event)">
+            <input type="number" name="salary-to" placeholder="Enter salary to" onchange="salaryMax(event)">
             <p id="min-max-salary-error" class="min-max-error"></p>
             <div class="buttons">
                 <button type="submit">Submit</button>
@@ -71,8 +71,6 @@
         <ul class="salary-employees">
         </ul>
     </section>
-
-
 
     <script src="src/form.js"></script>
 </body>
