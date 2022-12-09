@@ -11,41 +11,43 @@
 
 <body>
     <header class="form-title">
-        Employees Company Forms
+        Library
     </header>
     <div class="menu-buttons">
-        <button onclick="showMenu(0)" class="menu-button">Add employee Form</button>
-        <button onclick="showMenu(1)" class="menu-button">All employees Form</button>
-        <button onclick="showMenu(2)" class="menu-button">Employees by salary Form</button>
+        <button onclick="showMenu(0)" class="menu-button">Add the book to the Library</button>
+        <button onclick="showMenu(1)" class="menu-button">All books in Library</button>
+        <button onclick="showMenu(2)" class="menu-button">Books by pages</button>
+        <button onclick="showMenu(3)" class="menu-button">Books by Author</button>
+
     </div>
-    <section class="add-employee" hidden>
-    <form id="employee_form" onsubmit="onSubmit(event)" class="form-class">
+    <section class="add-book" hidden>
+    <form id="book_form" onsubmit="onSubmit(event)" class="form-class">
         <div class="two-inputs">
-            <input type="text" name="employee_name" required placeholder="Enter employee name">
-            <input type="email" name="email" placeholder="Enter email" required>
+            <input type="text" name="book_title" placeholder="Enter book title" required>
+            <input type="text" name="author" placeholder="Enter the author" required>
         </div>
         <div class="date-label">
-            <label >Enter birthdate</label>
-            <input type="date"  name="birthDate"  required onchange="onChange(event)">
+            <label >Enter publication date</label>
+            <input type="date" name="publicationDate" onchange="onChange(event)" required>
             
         </div>
         <p id="date_error" class="error"></p>
         <div class="two-inputs">
-            <select name="department" required>
+            <select name="genre" required>
                 <option value hidden selected disabled>
-                    --Select Department--
+                    --Select Genre--
                 </option>
-                <option value="QA">QA</option>
-                <option value="Development">Development</option>
-                <option value="Management">Management</option>
-                <option value="Audit">Audit</option>
+                <option value="Drama">Drama</option>
+                <option value="Tragedy">Tragedy</option>
+                <option value="Utopia">Utopia</option>
+                <option value="Historical">Historical</option>
             </select>
-            <input type="number" name="salary" placeholder="Enter salary"
+            <input type="number" name="pages" placeholder="Enter quantity of pages"
              onchange="onChange(event)" required>
              
         </div>
-        <p id="salary_error" class="error"></p>
-        <p id="the-employee-added"></p> 
+        <p id="pages_error" class="error"></p>
+        <p id="the-book-added"></p> 
         <div class="buttons">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
@@ -53,26 +55,40 @@
     </form>
     </section>
 
-    <section class="list-all-employees" hidden>       
-        <ul class="all-employees">
+    <section class="list-all-books" hidden>       
+        <ul class="all-books">
         </ul>
     </section>
 
-    <section class="list-salary-employees" hidden>
-        <form id="min-max-salary" onsubmit="salaryMinMax(event)">
-            <input type="number" name="salary-from" placeholder="Enter salary from" onchange="salaryMin(event)">
-            <input type="number" name="salary-to" placeholder="Enter salary to" onchange="salaryMax(event)">
-            <p id="min-max-salary-error" class="min-max-error"></p>
+    <section class="list-pages-books" hidden>
+        <form id="min-max-pages" onsubmit="pagesMinMax(event)">
+            <input type="number" name="pages-from" placeholder="Enter pages from" onchange="pagesMin(event)" required>
+            <input type="number" name="pages-to" placeholder="Enter pages to" onchange="pagesMax(event)" required>
+            <p id="min-max-pages-error" class="min-max-error"></p>
             <div class="buttons">
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
-        <ul class="salary-employees">
+        <ul class="pages-books">
         </ul>
     </section>
 
-    <script src="src/form.js"></script>
+    <section class="list-author-books">
+        <form id="books-of-author">
+            <div class="two-inputs">
+            <select name="all-authors" onchange="chooseAuthor(event)" class="list-authors">
+            </select>
+            <input type="text" name="author" placeholder="Enter author" onchange="chooseAuthor(event)" class="to-type-author">
+        </div>
+        </form>
+<ul class="author-book">
+
+</ul>
+    </section>
+    <p id="the-author-error" class="author-error"></p>
+
+    <script src="src/form.js" type="module"></script>
 </body>
 
 </html>
