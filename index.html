@@ -74,13 +74,16 @@
         </ul>
     </section>
 
-    <section class="list-author-books">
-        <form id="books-of-author">
-            <div class="two-inputs">
-            <select name="all-authors" onchange="chooseAuthor(event)" class="list-authors">
-            </select>
-            <input type="text" name="author" placeholder="Enter author" onchange="chooseAuthor(event)" class="to-type-author">
+    <section class="list-author-books" hidden>
+        <select name="all-authors" class="list-authors">
+        </select>
+        <form id="books-of-author" class="books-of-author-class" onsubmit="chooseAuthor(event)">
+            <div class="find-author">
+           
+            <input type="text" name="author" placeholder="Enter author" class="to-type-author">
         </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
         </form>
 <ul class="author-book">
 
@@ -88,7 +91,7 @@
     </section>
     <p id="the-author-error" class="author-error"></p>
 
-    <script src="src/form.js" type="module"></script>
+    <script src="src/main.js" type="module"></script>
 </body>
 
 </html>

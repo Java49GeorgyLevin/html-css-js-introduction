@@ -59,8 +59,9 @@ body {
     border: 1px solid black;
     border-radius: 2vh;
 }
-.list-all-books {
+ul {
     overflow-y: scroll;
+    max-height: 70vh;
 }
 .book-data {
     border: 1px solid black;

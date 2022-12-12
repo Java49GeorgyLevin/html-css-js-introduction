@@ -1,12 +1,16 @@
 import { Library } from "./data/library.js";
+import { showErrorMessage } from "./data/ui/errorMessage.js";
+
+const ERROR_CLASS = "error";
+
 
 const inputElements = document.querySelectorAll(".form-class [name]");
+const findAuthor = document.querySelectorAll(".books-of-author-class [name]");
 const MIN_pages = 50;
 const MAX_pages = 2000;
 const MIN_YEAR = 1980;
 const maxYear = getMaxYear();
-const TIME_OUT_ERROR_MESSAGE = 5000;
-const ERROR_CLASS = "error";
+
 const library = new Library();
 
 const dateErrorElement = document.getElementById("date_error");
@@ -65,15 +69,7 @@ function validatePublicationDate(element) {
     }
 
 }
-function showErrorMessage(element, message, errorElement) {
-    element.classList.add(ERROR_CLASS);
-    errorElement.innerHTML = message;
-    setTimeout(() => {
-        element.classList.remove(ERROR_CLASS);
-        element.value = ''; 
-        errorElement.innerHTML = '';
-    }, TIME_OUT_ERROR_MESSAGE);
-}
+
 
 function getMaxYear() {
     return new Date().getFullYear();
@@ -144,21 +140,23 @@ function pagesMinMax(event) {
 }
 
 function showAllAuthors() {
+// const allAuthors = library.getAllBooks().reduce((res, book) => {
+//     if(!res[book.author]) {res[book.author] = 1}
+//     else ++res[book.author];
+//     return res}, {})
     listAuthors.innerHTML = 
-    '<option value hidden selected disabled>--Select author--</option>'
- + library.getAllBooks().map(book =>
-        `<option>${book.author}</option>`);}
+    '<option value hidden selected disabled>--Authors in the Labrary--</option>'
+     + library.getAllBooks().map(book =>
+    `<option>${book.author}</option>`);}
+
 
 function chooseAuthor(event) {
     event.preventDefault();
-    console.log(event.target.name);
-    console.log(event.target.value);
-
-    const author = event.target.value;
+    const author = Array.from(findAuthor)[0].value;
     const book = library.getAuthorBooks(author);
-    console.log(book);
     if(book.length == 0) {
-        showErrorMessage(event.target, 'the author is absent', authorError);
+        showErrorMessage(event.target, `the author ${author} is absent`, authorError);
+        authorBook.innerHTML = '';
     }
     else {authorBook.innerHTML = bookData(book);}
 
