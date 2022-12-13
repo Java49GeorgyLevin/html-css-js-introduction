@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Library</title>
     <link rel="stylesheet" href="styles/form.css">
 </head>
 
@@ -14,21 +14,21 @@
         Library
     </header>
     <div class="menu-buttons">
-        <button onclick="showMenu(0)" class="menu-button">Add the book to the Library</button>
-        <button onclick="showMenu(1)" class="menu-button">All books in Library</button>
-        <button onclick="showMenu(2)" class="menu-button">Books by pages</button>
-        <button onclick="showMenu(3)" class="menu-button">Books by Author</button>
+        <button onclick="showSection(0)" class="menu-button">Add the book to the Library</button>
+        <button onclick="showSection(1)" class="menu-button">All books in Library</button>
+        <button onclick="showSection(2)" class="menu-button">Books by pages</button>
+        <button onclick="showSection(3)" class="menu-button">Books by Author</button>
 
     </div>
-    <section class="add-book" hidden>
-    <form id="book_form" onsubmit="onSubmit(event)" class="form-class">
+    <section class="add-book">
+    <form id="book_form" class="form-class">
         <div class="two-inputs">
             <input type="text" name="book_title" placeholder="Enter book title" required>
             <input type="text" name="author" placeholder="Enter the author" required>
         </div>
         <div class="date-label">
             <label >Enter publication date</label>
-            <input type="date" name="publicationDate" onchange="onChange(event)" required>
+            <input type="date" name="publication_date" id="publicationDate" required>
             
         </div>
         <p id="date_error" class="error"></p>
@@ -42,8 +42,7 @@
                 <option value="Utopia">Utopia</option>
                 <option value="Historical">Historical</option>
             </select>
-            <input type="number" name="pages" placeholder="Enter quantity of pages"
-             onchange="onChange(event)" required>
+            <input type="number" name="pages" placeholder="Enter quantity of pages" id="idPages" required>
              
         </div>
         <p id="pages_error" class="error"></p>

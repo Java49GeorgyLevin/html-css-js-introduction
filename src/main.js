@@ -1,83 +1,35 @@
 import { Library } from "./data/library.js";
+import { BookForm } from "./data/ui/bookForm.js";
 import { showErrorMessage } from "./data/ui/errorMessage.js";
 
-const ERROR_CLASS = "error";
 
-
-const inputElements = document.querySelectorAll(".form-class [name]");
 const findAuthor = document.querySelectorAll(".books-of-author-class [name]");
 const MIN_pages = 50;
 const MAX_pages = 2000;
 const MIN_YEAR = 1980;
-const maxYear = getMaxYear();
-
-const library = new Library();
-
-const dateErrorElement = document.getElementById("date_error");
-const pagesErrorElement = document.getElementById("pages_error");
-
 const menuSection = document.querySelectorAll("section");
 const menuButton = document.querySelectorAll(".menu-button");
+const ERROR_CLASS = "error";
 const ACTIVE_BUTTON = "active-button";
 
 const allbooks = document.querySelector(".all-books");
 const pagesBooks = document.querySelector(".pages-books");
-const minMaxPagesError = document.getElementById("min-max-pages-error");
+// const minMaxPagesError = document.getElementById("min-max-pages-error");
 let pagesFrom = 0;
 let pagesTo = 0;
 const listAuthors = document.querySelector(".list-authors");
 const authorBook = document.querySelector(".author-book");
-const authorError = document.querySelector(".author-error")
+const authorError = document.querySelector(".author-error");
 
-function onSubmit(event) {
-    event.preventDefault();
-    console.log("submitted");
-    const book = Array.from(inputElements).reduce(
-        (res, cur) => {
-            res[cur.name] = cur.value;
-            return res;
-        }, {}
-    )
-    console.log(book)
-    library.addBook(book);
-    bookAdded(book.book_title);
-    
-}
-function onChange(event) {
+const library = new Library();
+const bookForm = new BookForm({idForm: "book_form", idPublicationDate: "publicationDate",
+idPagesInput: "idPages", idPublicationDateError: "date_error", idPagesError: "pages_error",
+minPages: MIN_pages, maxPages: MAX_pages, minYear: MIN_YEAR});
+bookForm.addSubmitHandler(book => library.addBook(book));
 
-    if (event.target.name == "pages") {
-        validatePages(event.target)
-    } else if (event.target.name == "publicationDate") {
-        validatePublicationDate(event.target);
-    }
-}
-function validatePages(element) {
-    const value = +element.value;
-    if (value < MIN_pages || value > MAX_pages) {
-        const message = value < MIN_pages ? `pages must be ${MIN_pages} or greater`
-            : `pages must be ${MAX_pages} or less`;
-        showErrorMessage(element, message, pagesErrorElement);
-    }
-
-}
-function validatePublicationDate(element) {
-    const value = +element.value.slice(0, 4);
-    if (value < MIN_YEAR || value > maxYear) {
-        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater`:
-             `year must be ${maxYear} or less`;
-        showErrorMessage(element, message, dateErrorElement) ;    
-    }
-
-}
-
-
-function getMaxYear() {
-    return new Date().getFullYear();
-}
-
-function showMenu(index) {
-    menuSection.forEach (section => section.hidden = true);
-    menuButton.forEach (button => button.classList.remove(ACTIVE_BUTTON));
+function showSection(index) {
+    menuSection.forEach(section => section.hidden = true);
+    menuButton.forEach(button => button.classList.remove(ACTIVE_BUTTON));
     menuSection[index].hidden = false;
     menuButton[index].classList.add(ACTIVE_BUTTON);
     if(index == 1) {
@@ -162,9 +114,8 @@ function chooseAuthor(event) {
 
 }
 
-window.onSubmit = onSubmit;
-window.onChange = onChange;
-window.showMenu = showMenu;
+window.bookAdded = bookAdded;
+window.showSection = showSection;
 window.pagesMin = pagesMin;
 window.pagesMax = pagesMax;
 window.pagesMinMax = pagesMinMax;
