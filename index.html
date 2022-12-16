@@ -54,37 +54,37 @@
     </form>
     </section>
 
-    <section class="list-all-books" hidden>       
-        <ul class="all-books">
+    <section class="all-books" hidden>       
+        <ul class="list-all-books" id="list-all-books">
         </ul>
     </section>
 
-    <section class="list-pages-books" hidden>
-        <form id="min-max-pages" onsubmit="pagesMinMax(event)">
-            <input type="number" name="pages-from" placeholder="Enter pages from" onchange="pagesMin(event)" required>
-            <input type="number" name="pages-to" placeholder="Enter pages to" onchange="pagesMax(event)" required>
+    <section class="pages-books" hidden>
+        <form id="min-max-pages">
+            <input type="number" name="pages-from" id="pages-from" placeholder="Enter pages from" required>
+            <input type="number" name="pages-to" id="pages-to" placeholder="Enter pages to" required>
             <p id="min-max-pages-error" class="min-max-error"></p>
             <div class="buttons">
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
-        <ul class="pages-books">
+        <ul class="list-pages-books" id="list-pages-books">
         </ul>
     </section>
 
-    <section class="list-author-books" hidden>
+    <section class="author-books" hidden>
         <select name="all-authors" class="list-authors">
         </select>
-        <form id="books-of-author" class="books-of-author-class" onsubmit="chooseAuthor(event)">
+        <form id="books-of-author" class="books-of-author-class">
             <div class="find-author">
            
-            <input type="text" name="author" placeholder="Enter author" class="to-type-author">
+            <input type="text" name="author" id="current-author" placeholder="Enter author" class="to-type-author">
         </div>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         </form>
-<ul class="author-book">
+<ul class="list-author-book" id="list-author-book">
 
 </ul>
     </section>
