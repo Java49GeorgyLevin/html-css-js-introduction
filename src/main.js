@@ -64,7 +64,7 @@ function showSection(index) {
         showAllBooks();
     }
     if(index == 3) {
-        showAllAuthors();
+        countAllAuthors();
     }
 }
 
@@ -79,18 +79,27 @@ function showAllBooks() {
     listAllBooks.showBooks(books);
 }
 
-function showAllAuthors() {
-//     const allAuthors = library.getAllBooks().reduce((res, book) => {
-//     if(!res[book.author]) {res[book.author] = 1}
-//     else ++res[book.author];
-//     return res}, {})
-
+function countAllAuthors() {
+    const arUniqAuthors = [];
+    const objCountBooksByAuthors = library.getAllBooks().reduce((res, book) => {
+        if(!res[book.author]) {
+            res[book.author] = 1;
+            arUniqAuthors.push(book.author);
+        }
+        else {
+            ++res[book.author];
+            }
+        return res}, {});
     listAuthors.innerHTML = 
-    '<option value hidden selected disabled>--Authors in the Labrary--</option>'
-     + library.getAllBooks().map(book =>
-    `<option>${book.author}</option>`);
+    '<option value hidden selected disabled>--Authors in the Library--</option>'
+    +
+    showAllAuthors(arUniqAuthors, objCountBooksByAuthors);
 }
 
+function showAllAuthors(arAuthors, objCountBooks) {
+    return arAuthors.map(a => 
+     `<option>${a}: ${objCountBooks[a]}</option>`)
+}
 
 window.bookAdded = bookAdded;
 window.showSection = showSection;
