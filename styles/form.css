@@ -70,3 +70,7 @@ ul {
 li {
     list-style: none;
 }
+.books-of-author-class {
+    display: flex;
+    justify-content: center;
+}

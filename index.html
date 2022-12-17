@@ -63,14 +63,14 @@
         <form id="min-max-pages">
             <input type="number" name="pages-from" id="pages-from" placeholder="Enter pages from" required>
             <input type="number" name="pages-to" id="pages-to" placeholder="Enter pages to" required>
-            <p id="min-max-pages-error" class="min-max-error"></p>
             <div class="buttons">
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
-        <ul class="list-pages-books" id="list-pages-books">
-        </ul>
+    <p id="min-max-pages-error" class="min-max-error"></p>
+    <ul class="list-pages-books" id="list-pages-books">
+    </ul>
     </section>
 
     <section class="author-books" hidden>
@@ -81,15 +81,14 @@
            
             <input type="text" name="author" id="current-author" placeholder="Enter author" class="to-type-author">
         </div>
+
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
         </form>
-<ul class="list-author-book" id="list-author-book">
-
-</ul>
-    </section>
     <p id="the-author-error" class="author-error"></p>
-
+    <ul class="list-author-books" id="list-author-books">
+    </ul>
+    </section>
     <script src="src/main.js" type="module"></script>
 </body>
 

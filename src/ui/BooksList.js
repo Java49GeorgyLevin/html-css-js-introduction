@@ -4,6 +4,10 @@ export class BookList {
         this.#listBooks = document.getElementById(idList);    
     }
     showBooks(books) {
+        if(!books.length) {
+            this.#listBooks.innerHTML = "Nothing found in the library.";
+
+        } else
         this.#listBooks.innerHTML = bookData(books);
     }
 }
